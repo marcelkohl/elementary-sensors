@@ -8,7 +8,11 @@
 # elementary-vala-gtk-sensors
 An attempt to make visible temperature from sensors cli
 
-## compile
+## build / compile
+[build system](https://docs.elementary.io/develop/writing-apps/untitled/the-build-system)
 ```
-valac --pkg gtk+-3.0 Application.vala
+meson build --prefix=/usr
+cd build
+ninja
+ninja install
 ```
