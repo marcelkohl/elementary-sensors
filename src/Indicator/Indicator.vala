@@ -18,8 +18,17 @@ public class Sensors.Indicator : Wingpanel.Indicator {
         dbusclient.on_start.connect (() => this.visible = settings.get_boolean ("show-indicator"));
 
         dbusclient.interface.is_visible.connect ((visibility) => this.visible = visibility);
+
         dbusclient.interface.update.connect ((temperature) => {
             display_widget.temperature_widget.temperature = temperature;
+
+            if (temperature < 60) {
+              display_widget.temperature_widget.icon_name = "temperature-safe";
+            } else if (temperature > 60 && temperature < 90) {
+              display_widget.temperature_widget.icon_name = "temperature-attention";
+            } else if (temperature > 90) {
+              display_widget.temperature_widget.icon_name = "temperature-danger";
+            }
         });
     }
 

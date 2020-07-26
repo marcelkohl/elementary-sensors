@@ -2,5 +2,8 @@
 <gresources>
   <gresource prefix="/local/sample/sensors/icons">
     <file compressed="true" preprocess="xml-stripblanks">temperature.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">temperature-safe.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">temperature-attention.svg</file>
+    <file compressed="true" preprocess="xml-stripblanks">temperature-danger.svg</file>
   </gresource>
 </gresources>
