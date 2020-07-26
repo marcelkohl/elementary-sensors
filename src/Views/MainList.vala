@@ -1,4 +1,4 @@
-public class View.MainList {
+public class Views.MainList {
   private Gtk.ListStore list;
   public Gtk.TreeView view;
   private Gtk.CellRendererText cell;
@@ -19,7 +19,7 @@ public class View.MainList {
     view.expand = true;
   }
 
-  public Gtk.ListStore feed (Model.SensorRecord[] tree_view_record) {
+  public Gtk.ListStore feed (Models.SensorRecord[] tree_view_record) {
     list.clear();
 
     Gtk.TreeIter iter;

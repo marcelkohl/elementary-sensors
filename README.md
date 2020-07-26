@@ -8,11 +8,17 @@
 # elementary-vala-gtk-sensors
 An attempt to make visible temperature from sensors cli
 
-## build / compile
-[build system](https://docs.elementary.io/develop/writing-apps/untitled/the-build-system)
-```
-meson build --prefix=/usr
+## Building and running
+`meson build --prefix=/usr
 cd build
-ninja
-ninja install
-```
+ninja`
+
+**Pre running**
+`sudo ninja uninstall
+kill [wingpanel_process_id]
+sudo ninja install
+wingpanel`
+
+**running with debugger**
+`G_MESSAGES_DEBUG=all ./local.sample.sensors
+`

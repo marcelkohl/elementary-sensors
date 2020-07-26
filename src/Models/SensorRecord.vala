@@ -4,7 +4,7 @@ enum Column {
     VALUE
 }
 
-public class Model.SensorRecord {
+public class Models.SensorRecord {
 	public string group;
 	public string description;
 	public string value;

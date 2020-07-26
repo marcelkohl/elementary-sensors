@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Sensors
+GenericName=Temperature Sensors
+Comment=Show sensors data on an indicator
+Categories=System;Utility;
+Exec=local.sample.sensors %U
+Icon=local.sample.sensors
+Terminal=false
+Type=Application
+X-GNOME-Gettext-Domain=sensors
+Keywords=System sensors;Temperature;
+X-GNOME-UsesNotifications=false

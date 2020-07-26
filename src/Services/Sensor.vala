@@ -1,9 +1,9 @@
-public class Service.Sensor {
+public class Services.Sensor {
   public string last_stdout;
   public string last_stderr;
   public int last_status;
 
-  public Model.SensorRecord[] updated_data () {
+  public Models.SensorRecord[] updated_data () {
     Process.spawn_command_line_sync (
       "sensors -u",
       out last_stdout,
@@ -12,7 +12,7 @@ public class Service.Sensor {
     );
 
     string[] lines = last_stdout.split ("\n");
-    Model.SensorRecord[] sensor_records = {};
+    Models.SensorRecord[] sensor_records = {};
     string group_name = "";
     string first_column, second_column;
 
@@ -26,7 +26,7 @@ public class Service.Sensor {
       }
 
       if (first_column != null && second_column != null && second_column.length > 0) {
-        sensor_records += new Model.SensorRecord (group_name, first_column, second_column);
+        sensor_records += new Models.SensorRecord (group_name, first_column, second_column);
       }
     };
 

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema path="/local/sample/sensors/settings/" id="local.sample.sensors.settings">
+    <key type='b' name="show-indicator">
+      <default>false</default>
+      <summary>Show sensors indicator</summary>
+      <description>Indicates if the sensors indicator must be shown or not</description>
+    </key>
+  </schema>
+</schemalist>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <id>local.sample.sensors</id>
+  <metadata_license>CC0</metadata_license>
+  <project_license>GPL-3.0+</project_license>
+  <name>Sensors</name>
+  <summary>Sensors list and indicator</summary>
+  <description>
+    <p>Show sensors data on an indicator</p>
+  </description>
+    <screenshots>
+    <screenshot type="default">
+    </screenshot>
+  </screenshots>
+  <developer_name>Marcel Kohls</developer_name>
+</component>
