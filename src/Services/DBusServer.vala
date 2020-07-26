@@ -10,6 +10,7 @@ public class Sensors.DBusServer : Object {
   }
 
   public signal void is_visible (bool state);
+  public signal void update (int temperature);
 
   construct {
       Bus.own_name (

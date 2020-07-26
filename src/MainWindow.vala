@@ -11,7 +11,10 @@ public class Sensors.MainWindow : Gtk.Window {
         dbusserver = DBusServer.get_default ();
 
         Timeout.add_seconds (2, () => {
-          list_model.feed (sensors_data.updated_data());
+          Models.SensorRecord[] last_data = sensors_data.updated_data();
+          list_model.feed (last_data);
+          debug ("%g", sensors_data.average_temp(last_data));
+          dbusserver.update (sensors_data.average_temp(last_data));
 
           // foreach (Models.SensorRecord data in sensors_data.updated_data()) {
           //   debug("%s -> %s -> %s", data.group, data.description, data.value);

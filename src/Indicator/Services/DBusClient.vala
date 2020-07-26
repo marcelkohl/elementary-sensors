@@ -1,5 +1,6 @@
 [DBus (name = "local.sample.sensors")]
 public interface Sensors.DBusClientInterface : Object {
+    public signal void update (int temperature);
     public signal void is_visible (bool isVisible);
 }
 
