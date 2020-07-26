@@ -1,9 +1,9 @@
 public class Sensors.Widgets.DisplayWidget : Gtk.Grid {
-    public SensorsWidget sensor_widget;
+    public TemperatureWidget temperature_widget;
 
     construct {
-        sensor_widget = new SensorsWidget ("temperature");
-        
-        add (sensor_widget);
+        temperature_widget = new TemperatureWidget ("temperature");
+
+        add (temperature_widget);
     }
 }

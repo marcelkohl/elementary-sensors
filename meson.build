@@ -53,7 +53,7 @@ executable(
     'src/Services/Sensor.vala',
 
     'src/Models/SensorRecord.vala',
-    
+
     'src/Views/MainList.vala',
     c_args: c_args,
     dependencies: [
@@ -80,7 +80,7 @@ shared_module(
 
     'src/Indicator/Widgets/DisplayWidget.vala',
     'src/Indicator/Widgets/MenuWidget.vala',
-    'src/Indicator/Widgets/SensorsWidget.vala',
+    'src/Indicator/Widgets/TemperatureWidget.vala',
 
     'src/Indicator/Services/DBusClient.vala',
     icons_gresource,

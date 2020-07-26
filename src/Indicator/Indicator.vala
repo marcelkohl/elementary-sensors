@@ -19,7 +19,7 @@ public class Sensors.Indicator : Wingpanel.Indicator {
 
         dbusclient.interface.is_visible.connect ((visibility) => this.visible = visibility);
         dbusclient.interface.update.connect ((temperature) => {
-            display_widget.sensor_widget.percentage_value = temperature;
+            display_widget.temperature_widget.temperature = temperature;
         });
     }
 

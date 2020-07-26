@@ -1,15 +1,15 @@
-public class Sensors.Widgets.SensorsWidget : Gtk.Box {
-    private Gtk.Label percentage_label;
+public class Sensors.Widgets.TemperatureWidget : Gtk.Box {
+    private Gtk.Label content;
     private Gtk.Image icon;
 
     public string icon_name { get; construct; }
-    public int percentage_value {
+    public int temperature {
         set {
-          percentage_label.label = "%i° C".printf (value);
+          content.label = "%i° C".printf (value);
         }
     }
 
-    public SensorsWidget (string icon_name) {
+    public TemperatureWidget (string icon_name) {
         Object (
             orientation: Gtk.Orientation.HORIZONTAL,
             icon_name: icon_name
@@ -20,10 +20,10 @@ public class Sensors.Widgets.SensorsWidget : Gtk.Box {
         icon = new Gtk.Image.from_icon_name (icon_name, Gtk.IconSize.SMALL_TOOLBAR);
         icon.margin_top = 4;
 
-        percentage_label = new Gtk.Label ("N/A");
-        percentage_label.margin_top = 4;
+        content = new Gtk.Label ("N/A");
+        content.margin_top = 4;
 
         pack_start (icon);
-        pack_start (percentage_label);
+        pack_start (content);
     }
 }
