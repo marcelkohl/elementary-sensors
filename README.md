@@ -14,11 +14,13 @@ cd build
 ninja`
 
 **Pre running**
+
 `sudo ninja uninstall
 kill [wingpanel_process_id]
 sudo ninja install
 wingpanel`
 
 **running with debugger**
+
 `G_MESSAGES_DEBUG=all ./local.sample.sensors
 `
