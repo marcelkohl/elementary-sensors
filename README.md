@@ -15,12 +15,10 @@ ninja`
 
 **Pre running**
 
-`
-sudo ninja uninstall
-kill [wingpanel_process_id]
-sudo ninja install
-wingpanel
-`
+`sudo ninja uninstall`
+`kill [wingpanel_process_id]`
+`sudo ninja install`
+`wingpanel`
 
 **running with debugger**
 
