@@ -23,11 +23,11 @@ public class Sensors.Indicator : Wingpanel.Indicator {
             display_widget.temperature_widget.temperature = temperature;
 
             if (temperature < 60) {
-              display_widget.temperature_widget.icon_name = "temperature-safe";
+              display_widget.temperature_widget.icon_name = "temperature-safe-symbolic";
             } else if (temperature > 60 && temperature < 90) {
-              display_widget.temperature_widget.icon_name = "temperature-attention";
+              display_widget.temperature_widget.icon_name = "temperature-attention-symbolic";
             } else if (temperature > 90) {
-              display_widget.temperature_widget.icon_name = "temperature-danger";
+              display_widget.temperature_widget.icon_name = "temperature-danger-symbolic";
             }
         });
     }

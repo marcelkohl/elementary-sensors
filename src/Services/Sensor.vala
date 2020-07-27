@@ -18,10 +18,10 @@ public class Services.Sensor {
 
       foreach (string str in lines) {
           string[] fields = str.split (":");
-          first_column = fields[0].strip();
-          second_column = fields[1].strip();
+          first_column = (bool)fields[0] ? fields[0].strip() : "";
+          second_column = (bool)fields[1] ? fields[1].strip() : "";
 
-          if (first_column != null && fields[0].has_prefix("  ") == false) {
+          if (first_column.length > 0 && first_column.has_prefix("  ") == false) {
               group_name = first_column;
           }
 

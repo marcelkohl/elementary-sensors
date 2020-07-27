@@ -2,7 +2,7 @@ public class Sensors.Widgets.DisplayWidget : Gtk.Grid {
     public TemperatureWidget temperature_widget;
 
     construct {
-        temperature_widget = new TemperatureWidget ("temperature-danger");
+        temperature_widget = new TemperatureWidget ("temperature-symbolic");
 
         add (temperature_widget);
     }

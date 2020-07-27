@@ -1,0 +1,37 @@
+sudo ninja install
+[0/1] Installing files.
+Installing com.github.stsdc.monitor to /usr/bin
+Installing libmonitor.so to /usr/lib/x86_64-linux-gnu/wingpanel
+Installing data/com.github.stsdc.monitor.desktop to /usr/share/applications
+Installing data/com.github.stsdc.monitor.appdata.xml to /usr/share/metainfo
+Installing /home/marcel/Projects/monitor/data/icons/16/com.github.stsdc.monitor.svg to /usr/share/icons/hicolor/16x16/apps
+Installing /home/marcel/Projects/monitor/data/icons/16/com.github.stsdc.monitor.svg to /usr/share/icons/hicolor/16x16@2/apps
+Installing /home/marcel/Projects/monitor/data/icons/24/com.github.stsdc.monitor.svg to /usr/share/icons/hicolor/24x24/apps
+Installing /home/marcel/Projects/monitor/data/icons/24/com.github.stsdc.monitor.svg to /usr/share/icons/hicolor/24x24@2/apps
+Installing /home/marcel/Projects/monitor/data/icons/32/com.github.stsdc.monitor.svg to /usr/share/icons/hicolor/32x32/apps
+Installing /home/marcel/Projects/monitor/data/icons/32/com.github.stsdc.monitor.svg to /usr/share/icons/hicolor/32x32@2/apps
+Installing /home/marcel/Projects/monitor/data/icons/48/com.github.stsdc.monitor.svg to /usr/share/icons/hicolor/48x48/apps
+Installing /home/marcel/Projects/monitor/data/icons/48/com.github.stsdc.monitor.svg to /usr/share/icons/hicolor/48x48@2/apps
+Installing /home/marcel/Projects/monitor/data/icons/64/com.github.stsdc.monitor.svg to /usr/share/icons/hicolor/64x64/apps
+Installing /home/marcel/Projects/monitor/data/icons/64/com.github.stsdc.monitor.svg to /usr/share/icons/hicolor/64x64@2/apps
+Installing /home/marcel/Projects/monitor/data/icons/128/com.github.stsdc.monitor.svg to /usr/share/icons/hicolor/128x128/apps
+Installing /home/marcel/Projects/monitor/data/icons/128/com.github.stsdc.monitor.svg to /usr/share/icons/hicolor/128x128@2/apps
+Installing /home/marcel/Projects/monitor/data/com.github.stsdc.monitor.gschema.xml to /usr/share/glib-2.0/schemas
+Running custom install script '/home/marcel/Projects/monitor/meson/post_install.py'
+Compiling gsettings schemas…
+Nenhuma chave “button-layout” no esquema “org.gnome.mutter:Pantheon” como especificado no arquivo de sobrescrita “/usr/share/glib-2.0/schemas/20_elementary.pantheon.wm.gschema.override”; ignorando sobrescrita para esta chave.
+Nenhuma chave “enable-animations” no esquema “org.gnome.mutter:Pantheon” como especificado no arquivo de sobrescrita “/usr/share/glib-2.0/schemas/20_elementary.pantheon.wm.gschema.override”; ignorando sobrescrita para esta chave.
+Updating desktop icon cache…
+Running custom install script '/usr/bin/meson --internal gettext install --subdir=po --localedir=share/locale --pkgname=com.github.stsdc.monitor'
+Installing /home/marcel/Projects/monitor/build/po/de.gmo to /usr/share/locale/de/LC_MESSAGES/com.github.stsdc.monitor.mo
+Installing /home/marcel/Projects/monitor/build/po/es.gmo to /usr/share/locale/es/LC_MESSAGES/com.github.stsdc.monitor.mo
+Installing /home/marcel/Projects/monitor/build/po/fr.gmo to /usr/share/locale/fr/LC_MESSAGES/com.github.stsdc.monitor.mo
+Installing /home/marcel/Projects/monitor/build/po/it.gmo to /usr/share/locale/it/LC_MESSAGES/com.github.stsdc.monitor.mo
+Installing /home/marcel/Projects/monitor/build/po/ja.gmo to /usr/share/locale/ja/LC_MESSAGES/com.github.stsdc.monitor.mo
+Installing /home/marcel/Projects/monitor/build/po/lt.gmo to /usr/share/locale/lt/LC_MESSAGES/com.github.stsdc.monitor.mo
+Installing /home/marcel/Projects/monitor/build/po/nl.gmo to /usr/share/locale/nl/LC_MESSAGES/com.github.stsdc.monitor.mo
+Installing /home/marcel/Projects/monitor/build/po/pl.gmo to /usr/share/locale/pl/LC_MESSAGES/com.github.stsdc.monitor.mo
+Installing /home/marcel/Projects/monitor/build/po/pt.gmo to /usr/share/locale/pt/LC_MESSAGES/com.github.stsdc.monitor.mo
+Installing /home/marcel/Projects/monitor/build/po/ru.gmo to /usr/share/locale/ru/LC_MESSAGES/com.github.stsdc.monitor.mo
+Installing /home/marcel/Projects/monitor/build/po/tr.gmo to /usr/share/locale/tr/LC_MESSAGES/com.github.stsdc.monitor.mo
+Installing /home/marcel/Projects/monitor/build/po/uk.gmo to /usr/share/locale/uk/LC_MESSAGES/com.github.stsdc.monitor.mo
