@@ -3,7 +3,7 @@ public class Service.Sensor {
   private string last_stderr;
   private int last_status;
 
-  public Models.SensorRecord[] updated_data () {
+  public DataModel.SensorRecord[] updated_data () {
       try {
         Process.spawn_command_line_sync (
             "sensors -u",
@@ -16,7 +16,7 @@ public class Service.Sensor {
       }
 
       string[] lines = last_stdout.split ("\n");
-      Models.SensorRecord[] sensor_records = {};
+      DataModel.SensorRecord[] sensor_records = {};
       string group_name = "";
       string first_column, second_column;
 
@@ -30,17 +30,17 @@ public class Service.Sensor {
           }
 
           if (first_column.length > 0 && second_column.length > 0) {
-              sensor_records += new Models.SensorRecord (group_name, first_column, second_column);
+              sensor_records += new DataModel.SensorRecord (group_name, first_column, second_column);
           }
       };
 
       return sensor_records;
     }
 
-    public int average_temp (Models.SensorRecord[] data) {
+    public int average_temp (DataModel.SensorRecord[] data) {
         double average = 0;
 
-        foreach (Models.SensorRecord str in data) {
+        foreach (DataModel.SensorRecord str in data) {
             if (str.description.contains ("temp") && str.description.contains("input")) {
                 average = ((double.parse(str.value) + average) / 2);
             }

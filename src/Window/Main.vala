@@ -12,7 +12,7 @@ public class Window.Main : Gtk.Window {
         dbusserver = Service.DBusServer.get_default ();
 
         Timeout.add_seconds (2, () => {
-          Models.SensorRecord[] last_data = sensors_data.updated_data();
+          DataModel.SensorRecord[] last_data = sensors_data.updated_data();
           list_model.feed (last_data);
           debug ("%g", sensors_data.average_temp(last_data));
           dbusserver.update (sensors_data.average_temp(last_data));
@@ -25,9 +25,14 @@ public class Window.Main : Gtk.Window {
         });
 
         this.headerbar = new Window.Headerbar ();
-        this.headerbar.refresh.connect (() =>
-            debug ("refresh")
-        );
+        // this.headerbar.refresh.connect (() =>
+        //     debug ("refresh")
+        // );
+        this.headerbar.on_show_indicator_change.connect ((is_checked) => {
+            // debug (" xxxxx");
+            dbusserver.is_visible (is_checked);
+        });
+
         this.set_titlebar (this.headerbar);
     }
 
@@ -36,20 +41,21 @@ public class Window.Main : Gtk.Window {
         grid.column_spacing = 6;
         grid.row_spacing = 6;
 
-        var update_button = new Gtk.Button.with_label (_("Update"));
+        // var update_button = new Gtk.Button.with_label (_("Update"));
 
-        update_button.clicked.connect (() => {
-            dbusserver.is_visible (true);
-        });
+        // update_button.clicked.connect (() => {
+        //     dbusserver.is_visible (true);
+        // });
 
         // add first row of widgets
-        grid.attach (update_button, 0, 0, 1, 1);
+        // grid.attach (update_button, 0, 0, 1, 1);
 
         list_model = new View.MainList();
         sensors_data = new Service.Sensor();
 
-        grid.attach_next_to (list_model.view, update_button, Gtk.PositionType.BOTTOM, 1, 1);
+        //grid.attach_next_to (list_model.view, update_button, Gtk.PositionType.BOTTOM, 1, 1);
 
+        grid.add(list_model.view);
         this.add(grid);
     }
 }

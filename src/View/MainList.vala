@@ -19,7 +19,7 @@ public class View.MainList {
     view.expand = true;
   }
 
-  public Gtk.ListStore feed (Models.SensorRecord[] tree_view_record) {
+  public Gtk.ListStore feed (DataModel.SensorRecord[] tree_view_record) {
     list.clear();
 
     Gtk.TreeIter iter;

@@ -53,7 +53,7 @@ executable(
     'src/Service/DBusServer.vala',
     'src/Service/Sensor.vala',
 
-    'src/Model/SensorRecord.vala',
+    'src/DataModel/SensorRecord.vala',
 
     'src/View/MainList.vala',
     c_args: c_args,
