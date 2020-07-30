@@ -25,5 +25,8 @@ ninja`
 
 **running with debugger**
 
-`G_MESSAGES_DEBUG=all ./local.sample.sensors
+`G_MESSAGES_DEBUG=all ./com.github.marcelkohl.sensors
 `
+
+## Copyright
+App icon made by [Freepik](https://www.flaticon.com/authors/freepik) from [www.flaticon.com](https://www.flaticon.com/)

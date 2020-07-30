@@ -1,4 +1,4 @@
-public class Sensors.Widgets.TemperatureWidget : Gtk.Box {
+public class Widget.TemperatureWidget : Gtk.Box {
     private Gtk.Label content;
     private Gtk.Image icon;
 

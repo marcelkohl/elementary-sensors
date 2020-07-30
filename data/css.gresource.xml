@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-  <gresource prefix="/local/sample/sensors">
+  <gresource prefix="/com/github/marcelkohl/sensors">
     <file alias="Application.css" compressed="true">Application.css</file>
   </gresource>
 </gresources>

@@ -1,10 +1,10 @@
-[DBus (name = "local.sample.sensors")]
-public interface Sensors.DBusClientInterface : Object {
+[DBus (name = "com.github.marcelkohl.sensors")]
+public interface Service.DBusClientInterface : Object {
     public signal void update (int temperature);
     public signal void is_visible (bool isVisible);
 }
 
-public class Sensors.DBusClient : Object {
+public class Service.DBusClient : Object {
     private static GLib.Once<DBusClient> instance;
     public DBusClientInterface? interface = null;
 
@@ -19,13 +19,13 @@ public class Sensors.DBusClient : Object {
         try {
             interface = Bus.get_proxy_sync (
                 BusType.SESSION,
-                "local.sample.sensors",
-                "/local/sample/sensors"
+                "com.github.marcelkohl.sensors",
+                "/com/github/marcelkohl/sensors"
                 );
 
             Bus.watch_name (
                 BusType.SESSION,
-                "local.sample.sensors",
+                "com.github.marcelkohl.sensors",
                 BusNameWatcherFlags.NONE,
                 () => on_start (),
                 () => on_terminate ()

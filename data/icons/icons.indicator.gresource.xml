@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
-  <gresource prefix="/local/sample/sensors/icons">
+  <gresource prefix="/com/github/marcelkohl/sensors/icons">
     <file compressed="true" preprocess="xml-stripblanks">temperature-symbolic.svg</file>
     <file compressed="true" preprocess="xml-stripblanks">temperature-safe-symbolic.svg</file>
     <file compressed="true" preprocess="xml-stripblanks">temperature-attention-symbolic.svg</file>

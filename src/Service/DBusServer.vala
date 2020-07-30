@@ -1,7 +1,7 @@
-[DBus (name = "local.sample.sensors")]
+[DBus (name = "com.github.marcelkohl.sensors")]
 public class Service.DBusServer : Object {
-  private const string DBUS_NAME = "local.sample.sensors";
-  private const string DBUS_PATH = "/local/sample/sensors";
+  private const string DBUS_NAME = "com.github.marcelkohl.sensors";
+  private const string DBUS_PATH = "/com/github/marcelkohl/sensors";
 
   private static GLib.Once<DBusServer> instance;
 

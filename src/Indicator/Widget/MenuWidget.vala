@@ -1,4 +1,4 @@
-public class Sensors.Widgets.MenuWidget : Gtk.Grid {
+public class Widget.MenuWidget : Gtk.Grid {
     private Gtk.ModelButton button_quit;
 
     public signal void quit_sensors ();

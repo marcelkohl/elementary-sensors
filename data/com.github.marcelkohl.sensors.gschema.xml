@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-  <schema path="/local/sample/sensors/settings/" id="local.sample.sensors.settings">
+  <schema path="/com/github/marcelkohl/sensors/settings/" id="com.github.marcelkohl.sensors.settings">
     <key type='b' name="show-indicator">
       <default>false</default>
       <summary>Show sensors indicator</summary>

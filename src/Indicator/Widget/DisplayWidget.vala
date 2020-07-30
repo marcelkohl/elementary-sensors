@@ -1,4 +1,4 @@
-public class Sensors.Widgets.DisplayWidget : Gtk.Grid {
+public class Widget.DisplayWidget : Gtk.Grid {
     public TemperatureWidget temperature_widget;
 
     construct {

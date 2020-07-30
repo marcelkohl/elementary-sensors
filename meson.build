@@ -1,4 +1,4 @@
-project('local.sample.sensors', 'vala', 'c')
+project('com.github.marcelkohl.sensors', 'vala', 'c')
 
 gnome = import('gnome')
 i18n = import('i18n')
@@ -78,11 +78,11 @@ shared_module(
     'sensors',
     'src/Indicator/Indicator.vala',
 
-    'src/Indicator/Widgets/DisplayWidget.vala',
-    'src/Indicator/Widgets/MenuWidget.vala',
-    'src/Indicator/Widgets/TemperatureWidget.vala',
+    'src/Indicator/Widget/DisplayWidget.vala',
+    'src/Indicator/Widget/MenuWidget.vala',
+    'src/Indicator/Widget/TemperatureWidget.vala',
 
-    'src/Indicator/Services/DBusClient.vala',
+    'src/Indicator/Service/DBusClient.vala',
     icons_gresource,
     c_args: c_args,
     dependencies: [

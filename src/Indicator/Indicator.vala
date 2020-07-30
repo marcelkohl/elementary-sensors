@@ -1,18 +1,18 @@
-public class Sensors.Indicator : Wingpanel.Indicator {
-    private Widgets.DisplayWidget? display_widget = null;
-    private Widgets.MenuWidget? menu_widget = null;
+public class Indicator : Wingpanel.Indicator {
+    private Widget.DisplayWidget? display_widget = null;
+    private Widget.MenuWidget? menu_widget = null;
     private Settings settings;
-    private DBusClient dbusclient;
+    private Service.DBusClient dbusclient;
 
     construct {
-        Gtk.IconTheme.get_default ().add_resource_path ("/local/sample/sensors/icons");
-        settings = new Settings ("local.sample.sensors.settings");
+        Gtk.IconTheme.get_default ().add_resource_path ("/com/github/marcelkohl/sensors/icons");
+        settings = new Settings ("com.github.marcelkohl.sensors.settings");
         this.visible = false;
 
-        display_widget = new Widgets.DisplayWidget ();
-        menu_widget = new Widgets.MenuWidget ();
+        display_widget = new Widget.DisplayWidget ();
+        menu_widget = new Widget.MenuWidget ();
 
-        dbusclient = DBusClient.get_default ();
+        dbusclient = Service.DBusClient.get_default ();
 
         dbusclient.on_terminate.connect (() => this.visible = false);
         dbusclient.on_start.connect (() => this.visible = settings.get_boolean ("show-indicator"));
@@ -58,5 +58,5 @@ public Wingpanel.Indicator? get_indicator (Module module, Wingpanel.IndicatorMan
         return null;
     }
 
-    return new Sensors.Indicator ();
+    return new Indicator ();
 }

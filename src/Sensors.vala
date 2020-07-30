@@ -4,13 +4,13 @@ public class SensorsApp : Gtk.Application {
 
     public SensorsApp () {
         Object (
-            application_id: "local.sample.sensors",
+            application_id: "com.github.marcelkohl.sensors",
             flags : ApplicationFlags.FLAGS_NONE
         );
     }
 
     static construct {
-        settings = new Settings ("local.sample.sensors.settings");
+        settings = new Settings ("com.github.marcelkohl.sensors.settings");
     }
 
     public override void activate () {
