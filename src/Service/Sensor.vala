@@ -1,15 +1,19 @@
 public class Service.Sensor {
-  public string last_stdout;
-  public string last_stderr;
-  public int last_status;
+  private string last_stdout;
+  private string last_stderr;
+  private int last_status;
 
   public Models.SensorRecord[] updated_data () {
-      Process.spawn_command_line_sync (
-          "sensors -u",
-          out last_stdout,
-          out last_stderr,
-          out last_status
-      );
+      try {
+        Process.spawn_command_line_sync (
+            "sensors -u",
+            out last_stdout,
+            out last_stderr,
+            out last_status
+        );
+      } catch (GLib.SpawnError e) {
+        debug ("Failed to get data");
+      }
 
       string[] lines = last_stdout.split ("\n");
       Models.SensorRecord[] sensor_records = {};
