@@ -1,4 +1,4 @@
-public class Services.Sensor {
+public class Service.Sensor {
   public string last_stdout;
   public string last_stderr;
   public int last_status;

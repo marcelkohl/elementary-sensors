@@ -47,14 +47,14 @@ executable(
     icons_gresource,
     css_gresource,
     'src/Sensors.vala',
-    'src/MainWindow.vala',
+    'src/Window/Main/Window.vala',
 
-    'src/Services/DBusServer.vala',
-    'src/Services/Sensor.vala',
+    'src/Service/DBusServer.vala',
+    'src/Service/Sensor.vala',
 
-    'src/Models/SensorRecord.vala',
+    'src/Model/SensorRecord.vala',
 
-    'src/Views/MainList.vala',
+    'src/View/MainList.vala',
     c_args: c_args,
     dependencies: [
         glib,

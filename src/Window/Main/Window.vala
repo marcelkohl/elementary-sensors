@@ -1,14 +1,14 @@
-public class Sensors.MainWindow : Gtk.Window {
-    public DBusServer dbusserver;
-    public Services.Sensor sensors_data;
-    public Views.MainList list_model;
+public class Window.Main.Window : Gtk.Window {
+    public Service.DBusServer dbusserver;
+    public Service.Sensor sensors_data;
+    public View.MainList list_model;
 
-    public MainWindow (SensorsApp app) {
+    public Window (SensorsApp app) {
         this.set_application (app);
 
         define_window();
 
-        dbusserver = DBusServer.get_default ();
+        dbusserver = Service.DBusServer.get_default ();
 
         Timeout.add_seconds (2, () => {
           Models.SensorRecord[] last_data = sensors_data.updated_data();
@@ -38,8 +38,8 @@ public class Sensors.MainWindow : Gtk.Window {
         // add first row of widgets
         grid.attach (update_button, 0, 0, 1, 1);
 
-        list_model = new Views.MainList();
-        sensors_data = new Services.Sensor();
+        list_model = new View.MainList();
+        sensors_data = new Service.Sensor();
 
         grid.attach_next_to (list_model.view, update_button, Gtk.PositionType.BOTTOM, 1, 1);
 

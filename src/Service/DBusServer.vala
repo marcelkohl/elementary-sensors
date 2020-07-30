@@ -1,5 +1,5 @@
 [DBus (name = "local.sample.sensors")]
-public class Sensors.DBusServer : Object {
+public class Service.DBusServer : Object {
   private const string DBUS_NAME = "local.sample.sensors";
   private const string DBUS_PATH = "/local/sample/sensors";
 

@@ -1,6 +1,6 @@
-public class Sensors.SensorsApp : Gtk.Application {
+public class SensorsApp : Gtk.Application {
     public static Settings settings;
-    private MainWindow window = null;
+    private Window.Main.Window window = null;
 
     public SensorsApp () {
         Object (
@@ -20,7 +20,7 @@ public class Sensors.SensorsApp : Gtk.Application {
             return;
         }
 
-        window = new MainWindow (this);
+        window = new Window.Main.Window (this);
         window.show_all ();
     }
 

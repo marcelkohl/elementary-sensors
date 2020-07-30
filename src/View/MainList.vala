@@ -1,4 +1,4 @@
-public class Views.MainList {
+public class View.MainList {
   private Gtk.ListStore list;
   public Gtk.TreeView view;
   private Gtk.CellRendererText cell;
