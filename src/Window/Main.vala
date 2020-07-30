@@ -1,12 +1,13 @@
-public class Window.Main.Window : Gtk.Window {
+public class Window.Main : Gtk.Window {
     public Service.DBusServer dbusserver;
     public Service.Sensor sensors_data;
     public View.MainList list_model;
+    public Window.Headerbar headerbar;
 
-    public Window (SensorsApp app) {
+    public Main (SensorsApp app) {
         this.set_application (app);
 
-        define_window();
+        define_content ();
 
         dbusserver = Service.DBusServer.get_default ();
 
@@ -22,9 +23,15 @@ public class Window.Main.Window : Gtk.Window {
             //  dbusserver.update (22);
             return true;
         });
+
+        this.headerbar = new Window.Headerbar ();
+        this.headerbar.refresh.connect (() =>
+            debug ("refresh")
+        );
+        this.set_titlebar (this.headerbar);
     }
 
-    private void define_window () {
+    private void define_content () {
         var grid = new Gtk.Grid ();
         grid.column_spacing = 6;
         grid.row_spacing = 6;

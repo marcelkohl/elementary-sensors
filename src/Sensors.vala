@@ -1,6 +1,6 @@
 public class SensorsApp : Gtk.Application {
     public static Settings settings;
-    private Window.Main.Window window = null;
+    private Window.Main main_window = null;
 
     public SensorsApp () {
         Object (
@@ -15,13 +15,13 @@ public class SensorsApp : Gtk.Application {
 
     public override void activate () {
         if (get_windows () != null) {
-            window.show_all ();
-            window.present ();
+            main_window.show_all ();
+            main_window.present ();
             return;
         }
 
-        window = new Window.Main.Window (this);
-        window.show_all ();
+        main_window = new Window.Main (this);
+        main_window.show_all ();
     }
 
     public static int main (string [] args) {

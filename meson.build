@@ -47,7 +47,8 @@ executable(
     icons_gresource,
     css_gresource,
     'src/Sensors.vala',
-    'src/Window/Main/Window.vala',
+    'src/Window/Main.vala',
+    'src/Window/Headerbar.vala',
 
     'src/Service/DBusServer.vala',
     'src/Service/Sensor.vala',
