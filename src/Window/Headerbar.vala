@@ -1,4 +1,6 @@
 public class Window.Headerbar : Gtk.HeaderBar {
+    public Gtk.CheckButton show_indicator_checker;
+
     construct {
       has_subtitle = false;
       show_close_button = true;
@@ -27,7 +29,7 @@ public class Window.Headerbar : Gtk.HeaderBar {
         var show_indicator_label = new Gtk.Label (_("Show indicator"));
         show_indicator_label.halign = Gtk.Align.END;
 
-        var show_indicator_checker = new Gtk.CheckButton ();
+        show_indicator_checker = new Gtk.CheckButton ();
 
         preferences_grid.attach (show_indicator_label, 1, 0, 1, 1);
         preferences_grid.attach (show_indicator_checker, 0, 0, 1, 1);
