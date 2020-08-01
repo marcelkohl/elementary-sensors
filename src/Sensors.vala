@@ -37,11 +37,6 @@ public class SensorsApp : Gtk.Application {
       }
     }
 
-    // public void show_indicator (bool must_show) {
-    //     settings.set_boolean ("show-indicator", must_show);
-    //     dbusserver.is_visible (must_show);
-    // }
-
     public static int main (string [] args) {
         var app = new SensorsApp ();
         return app.run (args);
