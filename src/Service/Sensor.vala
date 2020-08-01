@@ -3,6 +3,15 @@ public class Service.Sensor {
   private string last_stderr;
   private int last_status;
 
+  public signal void on_sensor_update (DataModel.SensorRecord[] sensors_data);
+
+  public Sensor (int update_interval) {
+      Timeout.add_seconds (update_interval, () => {
+        this.on_sensor_update (this.updated_data());
+        return true;
+      });
+  }
+
   public DataModel.SensorRecord[] updated_data () {
       try {
         Process.spawn_command_line_sync (

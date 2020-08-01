@@ -1,7 +1,8 @@
 public class SensorsApp : Gtk.Application {
     private Window.Main main_window = null;
     public static Settings settings;
-    public Service.DBusServer dbusserver;
+    public Service.DBusServer indicator;
+    public Service.Sensor sensors_data;
 
     public SensorsApp () {
         Object (
@@ -21,10 +22,12 @@ public class SensorsApp : Gtk.Application {
             return;
         }
 
-        dbusserver = Service.DBusServer.get_default ();
+        sensors_data = new Service.Sensor (5);
+        indicator = Service.DBusServer.get_default ();
         main_window = new Window.Main (this);
+
         main_window.show_all ();
-        dbusserver.is_visible (settings.get_boolean ("show-indicator"));
+        indicator.is_visible (settings.get_boolean ("show-indicator"));
     }
 
     public bool show_indicator {
@@ -33,7 +36,7 @@ public class SensorsApp : Gtk.Application {
       }
       set {
           settings.set_boolean ("show-indicator", value);
-          dbusserver.is_visible (value);
+          indicator.is_visible (value);
       }
     }
 
