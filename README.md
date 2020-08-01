@@ -6,22 +6,25 @@
 ![sensors list](https://github.com/marcelkohl/elementary-vala-gtk-sensors/blob/master/sample/screenshot.png?raw=true)
 
 # elementary-vala-gtk-sensors
-An attempt to make visible temperature from sensors cli
+An attempt to make visible temperature from sensors cli.
+
+It is still not in a usable stage. Hope I can finish this soon.
 
 ## Building and running
-`meson build --prefix=/usr
+```
+meson build --prefix=/usr
 cd build
-ninja`
+ninja
+```
 
 **Pre running**
 
-`sudo ninja uninstall`
-
-`kill [wingpanel_process_id]`
-
-`sudo ninja install`
-
-`wingpanel`
+```
+sudo ninja uninstall
+kill [wingpanel_process_id]
+sudo ninja install
+wingpanel
+```
 
 **running with debugger**
 
