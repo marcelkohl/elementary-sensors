@@ -28,6 +28,9 @@ public class SensorsApp : Gtk.Application {
 
         main_window.show_all ();
         indicator.is_visible (settings.get_boolean ("show-indicator"));
+        sensors_data.on_sensor_update.connect ((last_data) => {
+          indicator.update (sensors_data.average_temp(last_data));
+        });
     }
 
     public bool show_indicator {

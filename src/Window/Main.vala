@@ -16,7 +16,7 @@ public class Window.Main : Gtk.Window {
 
         app.sensors_data.on_sensor_update.connect ((last_data) => {
             list_model.feed (last_data);
-            app.indicator.update (app.sensors_data.average_temp(last_data));
+            // app.indicator.update (app.sensors_data.average_temp(last_data));
         });
     }
 
