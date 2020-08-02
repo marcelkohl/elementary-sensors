@@ -1,12 +1,12 @@
 [DBus (name = "com.github.marcelkohl.sensors")]
-public interface Service.DBusClientInterface : Object {
+public interface DBus.SensorInterface : Object {
     public signal void update (int temperature);
     public signal void is_visible (bool isVisible);
 }
 
-public class Service.DBusClient : Object {
+public class Service.DBusClient : Object, DBus.SensorInterface {
     private static GLib.Once<DBusClient> instance;
-    public DBusClientInterface? interface = null;
+    public DBus.SensorInterface? interface = null;
 
     public static unowned DBusClient get_default () {
         return instance.once (() => { return new DBusClient (); });

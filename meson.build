@@ -8,6 +8,7 @@ datadir = join_paths(prefix, get_option('datadir'))
 libdir = join_paths(prefix, get_option('libdir'))
 icondir = join_paths(datadir, 'icons', 'hicolor')
 
+glib = dependency('glib-2.0')
 gtk = dependency('gtk+-3.0')
 wingpanel = dependency('wingpanel-2.0')
 
@@ -51,6 +52,7 @@ executable(
     'src/View/MainList.vala',
     c_args: c_args,
     dependencies: [
+        glib,
         gtk,
         meson.get_compiler('c').find_library('m', required : false),
         meson.get_compiler('vala').find_library('posix'),
@@ -73,6 +75,7 @@ shared_module(
     icons_gresource,
     c_args: c_args,
     dependencies: [
+        glib,
         gtk,
         wingpanel
     ],
