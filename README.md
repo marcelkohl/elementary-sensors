@@ -39,4 +39,4 @@ wingpanel
 `
 
 ## Copyright
-App icon made by [Freepik](https://www.flaticon.com/authors/freepik) from [www.flaticon.com](https://www.flaticon.com/)
+App icon and icons on list made by [Freepik](https://www.flaticon.com/authors/freepik) from [www.flaticon.com](https://www.flaticon.com/)

@@ -11,6 +11,7 @@ icondir = join_paths(datadir, 'icons', 'hicolor')
 glib = dependency('glib-2.0')
 gtk = dependency('gtk+-3.0')
 wingpanel = dependency('wingpanel-2.0')
+granite = dependency('granite', version: '>=5.2.3')
 
 config_data = configuration_data()
 config_data.set_quoted('GETTEXT_PACKAGE', meson.project_name())
@@ -41,8 +42,12 @@ executable(
     icons_gresource,
     css_gresource,
     'src/Sensors.vala',
+
     'src/Window/Main.vala',
     'src/Window/Headerbar.vala',
+    'src/Window/DeviceList.vala',
+    'src/Window/DeviceItem.vala',
+    'src/Window/Footer.vala',
 
     'src/Service/DBusServer.vala',
     'src/Service/Sensor.vala',
@@ -52,6 +57,7 @@ executable(
     'src/View/MainList.vala',
     c_args: c_args,
     dependencies: [
+        granite,
         glib,
         gtk,
         meson.get_compiler('c').find_library('m', required : false),
