@@ -5,10 +5,17 @@
 
 ![sensors list](https://github.com/marcelkohl/elementary-vala-gtk-sensors/blob/master/sample/screenshot.png?raw=true)
 
-# elementary-vala-gtk-sensors
+# elementary-sensors
 An attempt to make visible temperature from sensors cli.
 
 It is still not in a usable stage. Hope I can finish this soon.
+
+## Dependencies
+lm-sensors must be installed to get some information.
+```
+sudo apt-get install lm-sensors
+sudo sensors-detect
+```
 
 ## Building and running
 ```
