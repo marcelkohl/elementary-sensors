@@ -28,6 +28,9 @@ public class Service.Sensor {
       DataModel.SensorRecord[] sensor_records = {};
       string group_name = "";
       string first_column, second_column;
+      string item_hash = "";
+      string column_type = "";
+      string column_description = "";
 
       foreach (string str in lines) {
           string[] fields = str.split (":");
@@ -36,10 +39,31 @@ public class Service.Sensor {
 
           if (first_column.length > 0 && first_column.has_prefix("  ") == false) {
               group_name = first_column.strip();
+          } else {
+              first_column = first_column.strip();
           }
 
-          if (first_column.length > 0 && second_column.length > 0) {
-              sensor_records += new DataModel.SensorRecord (group_name, first_column, second_column);
+          column_type = "";
+          column_description = first_column;
+
+          if (column_description.contains("_")) {
+              string[] first_column_fields = column_description.split("_");
+
+              column_description = first_column_fields[0];
+              column_type = first_column_fields[1];
+          }
+
+          if (column_description.length > 0 && second_column.length > 0) {
+              item_hash = group_name + first_column;
+              item_hash = GLib.Checksum.compute_for_string (ChecksumType.MD5, item_hash, item_hash.length);
+
+              sensor_records += new DataModel.SensorRecord (
+                  item_hash,
+                  group_name,
+                  group_name == column_description ? "" : column_description,
+                  column_type,
+                  second_column
+              );
           }
       };
 
@@ -50,8 +74,8 @@ public class Service.Sensor {
         double average = 0;
 
         foreach (DataModel.SensorRecord str in data) {
-            if (str.description.contains ("temp") && str.description.contains("input")) {
-                average = ((double.parse(str.value) + average) / 2);
+            if (str.type == "input" && str.description.contains ("temp")) {
+                average = ((double.parse (str.value) + average) / 2);
             }
         };
 
