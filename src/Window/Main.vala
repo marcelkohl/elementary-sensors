@@ -16,7 +16,6 @@ public class Window.Main : Gtk.Window {
 
         app.sensors_data.on_sensor_update.connect ((last_data) => {
             list_model.feed (last_data);
-            // app.indicator.update (app.sensors_data.average_temp(last_data));
         });
     }
 
@@ -28,6 +27,13 @@ public class Window.Main : Gtk.Window {
         list_model = new View.MainList();
 
         grid.add(list_model.view);
-        this.add(grid);
+        this.default_height = 400;
+        this.default_width = 300;
+
+        var scrolled_window = new Gtk.ScrolledWindow (null, null);
+        scrolled_window.add (grid);
+        scrolled_window.expand = true;
+
+        this.add(scrolled_window);
     }
 }
