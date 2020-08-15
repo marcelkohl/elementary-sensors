@@ -20,8 +20,10 @@ sudo sensors-detect
 ## To Do
 - Run in background;
 - Select sensors for average calculation
-- Optional show percentage
 - Save/load selected sensors
+- Indicator menu to show window
+- Optional show percentage
+- Translations
 - Add to elementary store
 
 ## Building and running
