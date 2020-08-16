@@ -1,4 +1,5 @@
 enum Column {
+    CHECK,
     ID,
     GROUP,
     DESCRIPTION,
