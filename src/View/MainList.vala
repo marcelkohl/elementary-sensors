@@ -6,6 +6,8 @@ public class View.MainList {
   private Gtk.TreePath last_row_selected;
   private Gtk.TreeIter iter;
 
+  public signal void on_toggled (string record_id, bool is_toggled);
+
   public MainList () {
     view = new Gtk.TreeView ();
     cell = new Gtk.CellRendererText ();
@@ -28,12 +30,42 @@ public class View.MainList {
         last_row_selected = path;
     });
 
-    cell_toggle.toggled.connect( (toggle, path) => {
-        debug ("clicked %s", path);
-    });
+    // var selection = view.get_selection ();
+    // selection.changed.connect ((tree_selection)=>{
+    //   debug ("selection changed");
+    // });
+    //
+    cell_toggle.toggled.connect (this.update_clicked_toggle);
 
     view.set_model (list);
     view.expand = true;
+  }
+
+  private void select_row_path (string str_path) {
+      Gtk.TreePath path = new Gtk.TreePath.from_string (str_path);
+      view.set_cursor(path, null, false);
+  }
+
+  private void update_clicked_toggle (Gtk.CellRendererToggle toggle, string str_path) {
+      this.select_row_path (str_path);
+
+      Gtk.TreeModel model;
+      Gtk.TreeSelection selected = view.get_selection ();
+      bool was_checked;
+      string record_id;
+
+      selected.get_selected (out model, out iter);
+
+      model.get (iter,
+          Column.CHECK, out was_checked,
+          Column.ID, out record_id
+      );
+
+      list.set (iter,
+          Column.CHECK, !was_checked
+      );
+
+      this.on_toggled (record_id, !was_checked);
   }
 
   public Gtk.ListStore feed (DataModel.SensorRecord[] tree_view_record) {
@@ -52,7 +84,7 @@ public class View.MainList {
         );
     }
 
-    if (last_selected != null) {
+    if (last_row_selected != null) {
         view.set_cursor(last_row_selected, null, false);
     }
 

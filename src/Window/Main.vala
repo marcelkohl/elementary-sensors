@@ -24,7 +24,11 @@ public class Window.Main : Gtk.Window {
         grid.column_spacing = 6;
         grid.row_spacing = 6;
 
-        list_model = new View.MainList();
+        list_model = new View.MainList ();
+
+        list_model.on_toggled.connect ((record_id, is_checked)=> {
+            debug ("record %s status is %s", record_id, (is_checked ? "true" : "false"));
+        });
 
         grid.add(list_model.view);
         this.default_height = 400;
