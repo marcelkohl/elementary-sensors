@@ -3,6 +3,8 @@ public class View.MainList {
   public Gtk.TreeView view;
   private Gtk.CellRendererText cell;
   private Gtk.CellRendererToggle cell_toggle;
+  private Gtk.TreePath last_row_selected;
+  private Gtk.TreeIter iter;
 
   public MainList () {
     view = new Gtk.TreeView ();
@@ -20,6 +22,12 @@ public class View.MainList {
     view.insert_column_with_attributes (-1, "Type", cell, "text", Column.TYPE);
     view.insert_column_with_attributes (-1, "Value", cell, "text", Column.VALUE);
 
+    view.activate_on_single_click = true;
+
+    view.row_activated.connect( (path, column) => {
+        last_row_selected = path;
+    });
+
     cell_toggle.toggled.connect( (toggle, path) => {
         debug ("clicked %s", path);
     });
@@ -30,8 +38,6 @@ public class View.MainList {
 
   public Gtk.ListStore feed (DataModel.SensorRecord[] tree_view_record) {
     list.clear();
-
-    Gtk.TreeIter iter;
 
     for (int i = 0; i < tree_view_record.length; i++) {
         list.append (out iter);
@@ -44,6 +50,10 @@ public class View.MainList {
             Column.TYPE, tree_view_record[i].type,
             Column.VALUE, tree_view_record[i].value
         );
+    }
+
+    if (last_selected != null) {
+        view.set_cursor(last_row_selected, null, false);
     }
 
     return list;
