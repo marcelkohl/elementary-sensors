@@ -15,7 +15,15 @@ public class Window.Main : Gtk.Window {
         this.set_titlebar (this.headerbar);
 
         app.sensors_data.on_sensor_update.connect ((last_data) => {
-            list_model.feed (last_data);
+            list_model.feed (last_data, app.records_selected);
+        });
+
+        list_model.on_toggled.connect ((record_id, is_checked)=> {
+            if (is_checked) {
+                app.add_record_hash_to_settings(record_id);
+            } else {
+                app.remove_record_hash_from_settings(record_id);
+            }
         });
     }
 
@@ -25,10 +33,6 @@ public class Window.Main : Gtk.Window {
         grid.row_spacing = 6;
 
         list_model = new View.MainList ();
-
-        list_model.on_toggled.connect ((record_id, is_checked)=> {
-            debug ("record %s status is %s", record_id, (is_checked ? "true" : "false"));
-        });
 
         grid.add(list_model.view);
         this.default_height = 400;

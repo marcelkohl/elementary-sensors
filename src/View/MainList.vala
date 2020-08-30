@@ -1,10 +1,10 @@
 public class View.MainList {
   private Gtk.ListStore list;
-  public Gtk.TreeView view;
   private Gtk.CellRendererText cell;
   private Gtk.CellRendererToggle cell_toggle;
   private Gtk.TreePath last_row_selected;
   private Gtk.TreeIter iter;
+  public Gtk.TreeView view;
 
   public signal void on_toggled (string record_id, bool is_toggled);
 
@@ -68,14 +68,14 @@ public class View.MainList {
       this.on_toggled (record_id, !was_checked);
   }
 
-  public Gtk.ListStore feed (DataModel.SensorRecord[] tree_view_record) {
+  public Gtk.ListStore feed (DataModel.SensorRecord[] tree_view_record, string records_selected) {
     list.clear();
 
     for (int i = 0; i < tree_view_record.length; i++) {
         list.append (out iter);
         list.set (
             iter,
-            Column.CHECK, false,
+            Column.CHECK, records_selected.index_of (tree_view_record[i].id) >= 0,
             Column.ID, tree_view_record[i].id,
             Column.GROUP, tree_view_record[i].group,
             Column.DESCRIPTION, tree_view_record[i].description,

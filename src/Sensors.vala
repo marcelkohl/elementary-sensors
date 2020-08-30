@@ -3,10 +3,11 @@ public class SensorsApp : Gtk.Application {
     public static Settings settings;
     public Service.DBusServer indicator;
     public Service.Sensor sensors_data;
+    public string records_selected = "";
 
     public SensorsApp () {
         Object (
-            application_id: "com.github.marcelkohl.sensors",
+            application_id: "cthis.records_selectedom.github.marcelkohl.sensors",
             flags : ApplicationFlags.FLAGS_NONE
         );
     }
@@ -25,6 +26,7 @@ public class SensorsApp : Gtk.Application {
         sensors_data = new Service.Sensor (5);
         indicator = Service.DBusServer.get_default ();
         main_window = new Window.Main (this);
+        records_selected = settings.get_string ("selected-hashes");
 
         main_window.show_all ();
         indicator.is_visible (settings.get_boolean ("show-indicator"));
@@ -43,7 +45,17 @@ public class SensorsApp : Gtk.Application {
       }
     }
 
-    public static int main (string [] args) {
+    public void add_record_hash_to_settings (string record_hash) {
+      this.records_selected += record_hash + ",";
+      settings.set_string ("selected-hashes", this.records_selected);
+    }
+
+    public void remove_record_hash_from_settings (string record_hash) {
+      this.records_selected = this.records_selected.replace(record_hash + ",", "");
+      settings.set_string ("selected-hashes", this.records_selected);
+    }
+
+    public static int main (string[] args) {
         var app = new SensorsApp ();
         return app.run (args);
     }
