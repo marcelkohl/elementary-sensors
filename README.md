@@ -19,8 +19,6 @@ sudo sensors-detect
 
 ## To Do
 - Run in background;
-- Select sensors for average calculation
-- Save/load selected sensors
 - Indicator menu to show window
 - Optional show percentage
 - Translations
