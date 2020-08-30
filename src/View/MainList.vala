@@ -18,7 +18,7 @@ public class View.MainList {
     cell.set ("weight", 700);
 
     view.insert_column_with_attributes (-1, "Check", cell_toggle, "active", Column.CHECK);
-    view.insert_column_with_attributes (-1, "Id", cell, "text", Column.ID);
+    // view.insert_column_with_attributes (-1, "Id", cell, "text", Column.ID);
     view.insert_column_with_attributes (-1, "Group", cell, "text", Column.GROUP);
     view.insert_column_with_attributes (-1, "Description", cell, "text", Column.DESCRIPTION);
     view.insert_column_with_attributes (-1, "Type", cell, "text", Column.TYPE);
@@ -30,11 +30,6 @@ public class View.MainList {
         last_row_selected = path;
     });
 
-    // var selection = view.get_selection ();
-    // selection.changed.connect ((tree_selection)=>{
-    //   debug ("selection changed");
-    // });
-    //
     cell_toggle.toggled.connect (this.update_clicked_toggle);
 
     view.set_model (list);

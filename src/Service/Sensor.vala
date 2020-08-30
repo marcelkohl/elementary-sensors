@@ -76,15 +76,21 @@ public class Service.Sensor {
         return sensor_records;
     }
 
-    public int average_temp (DataModel.SensorRecord[] data) {
-        double average = 0;
+    public int average_temp (DataModel.SensorRecord[] data, string records_selected) {
+        double total = 0;
+        int counter = 0;
 
         foreach (DataModel.SensorRecord str in data) {
-            if (str.type == "input" && str.description.contains ("temp")) {
-                average = ((double.parse (str.value) + average) / 2);
+            if (
+              records_selected.index_of(str.id) >= 0
+              && str.type == "input"
+              && str.description.contains ("temp")
+            ) {
+                total += double.parse (str.value);
+                counter++;
             }
         };
 
-        return (int)average;
+        return counter > 0 ? (int) (total/counter) : 0;
     }
 }

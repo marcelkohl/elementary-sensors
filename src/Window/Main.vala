@@ -36,7 +36,7 @@ public class Window.Main : Gtk.Window {
 
         grid.add(list_model.view);
         this.default_height = 400;
-        this.default_width = 550;
+        this.default_width = 400;
 
         var scrolled_window = new Gtk.ScrolledWindow (null, null);
         scrolled_window.add (grid);
