@@ -1,5 +1,7 @@
 public class Window.Headerbar : Gtk.HeaderBar {
     public Gtk.CheckButton show_indicator_checker;
+    public Gtk.CheckButton run_background_checker;
+    public Gtk.CheckButton show_percentage_checker;
 
     construct {
       has_subtitle = false;
@@ -8,6 +10,8 @@ public class Window.Headerbar : Gtk.HeaderBar {
     }
 
     public signal void on_show_indicator_change (bool is_checked);
+    public signal void on_run_background_change (bool is_checked);
+    public signal void on_show_percentage_change (bool is_checked);
 
     public Headerbar () {
         var preferences_button = new Gtk.MenuButton ();
@@ -26,18 +30,26 @@ public class Window.Headerbar : Gtk.HeaderBar {
         preferences_popover.add (preferences_grid);
         preferences_button.popover = preferences_popover;
 
-        var show_indicator_label = new Gtk.Label (_("Show indicator"));
-        show_indicator_label.halign = Gtk.Align.END;
+        show_indicator_checker = new Gtk.CheckButton.with_label (_("Show indicator"));
+        run_background_checker = new Gtk.CheckButton.with_label (_("Run in background"));
+        show_percentage_checker = new Gtk.CheckButton.with_label (_("Show indicator percentage"));
 
-        show_indicator_checker = new Gtk.CheckButton ();
-
-        preferences_grid.attach (show_indicator_label, 1, 0, 1, 1);
-        preferences_grid.attach (show_indicator_checker, 0, 0, 1, 1);
+        preferences_grid.add (run_background_checker);
+        preferences_grid.add (show_indicator_checker);
+        preferences_grid.add (show_percentage_checker);
 
         preferences_grid.show_all ();
 
         show_indicator_checker.notify["active"].connect (
             () => this.on_show_indicator_change(show_indicator_checker.active)
+        );
+
+        run_background_checker.notify["active"].connect (
+            () => this.on_run_background_change(run_background_checker.active)
+        );
+
+        show_percentage_checker.notify["active"].connect (
+            () => this.on_show_percentage_change(show_percentage_checker.active)
         );
     }
 }

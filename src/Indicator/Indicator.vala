@@ -30,6 +30,22 @@ public class Indicator : Wingpanel.Indicator {
               display_widget.temperature_widget.icon_name = "temperature-danger-symbolic";
             }
         });
+
+        menu_widget.show_window.connect (() => {
+            try {
+                dbusclient.interface.show_window ();
+            } catch (Error e) {
+                warning (e.message);
+            }
+        });
+
+        menu_widget.quit_app.connect (() => {
+            try {
+                dbusclient.interface.quit_app ();
+            } catch (Error e) {
+                warning (e.message);
+            }
+        });
     }
 
     public Indicator () {

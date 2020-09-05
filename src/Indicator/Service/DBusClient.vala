@@ -1,10 +1,13 @@
 [DBus (name = "com.github.marcelkohl.sensors")]
 public interface DBus.SensorInterface : Object {
+    public abstract void show_window () throws Error;
+    public abstract void quit_app () throws Error;
+
     public signal void update (int temperature);
     public signal void is_visible (bool isVisible);
 }
 
-public class Service.DBusClient : Object, DBus.SensorInterface {
+public class Service.DBusClient : Object {
     private static GLib.Once<DBusClient> instance;
     public DBus.SensorInterface? interface = null;
 

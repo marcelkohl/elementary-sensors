@@ -9,6 +9,8 @@ public class Service.DBusServer : Object  {
         return instance.once (() => { return new DBusServer (); });
     }
 
+    public signal void on_quit_app ();
+    public signal void on_show_window ();
     public signal void is_visible (bool state);
     public signal void update (int temperature);
 
@@ -21,6 +23,14 @@ public class Service.DBusServer : Object  {
             () => { },
             null
         );
+    }
+
+    public void show_window () throws IOError, DBusError {
+        this.on_show_window ();
+    }
+
+    public void quit_app () throws IOError, DBusError {
+        this.on_quit_app ();
     }
 
     private void on_bus_aquired (DBusConnection conn) {

@@ -28,11 +28,25 @@ public class SensorsApp : Gtk.Application {
         main_window = new Window.Main (this);
         records_selected = settings.get_string ("selected-hashes");
 
-        main_window.show_all ();
         indicator.is_visible (settings.get_boolean ("show-indicator"));
+
         sensors_data.on_sensor_update.connect ((last_data) => {
           indicator.update (sensors_data.average_temp(last_data, this.records_selected));
         });
+
+        indicator.on_quit_app.connect (() => { this.quit (); });
+        indicator.on_show_window.connect (() => { main_window.show (); });
+
+        main_window.show_all ();
+
+        if (this.run_background == true) {
+          main_window.hide ();
+        }
+
+        // main_window.close_before.connect(()=>{
+        //   debug ("xxx uu");
+        //   return;
+        // });
     }
 
     public bool show_indicator {
@@ -42,6 +56,21 @@ public class SensorsApp : Gtk.Application {
       set {
           settings.set_boolean ("show-indicator", value);
           indicator.is_visible (value);
+      }
+    }
+
+    public bool run_background {
+      get {
+          return settings.get_boolean ("run-background");
+      }
+      set {
+          debug ("run background attribute %s", value ? "y" : "n");
+
+          settings.set_boolean ("run-background", value);
+
+          if (value == true) {
+              main_window.hide ();
+          }
       }
     }
 

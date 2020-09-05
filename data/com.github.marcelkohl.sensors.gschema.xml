@@ -11,5 +11,10 @@
       <summary>selected hashes</summary>
       <description>hashes selected on the list to be part of the average calculation</description>
     </key>
+    <key type='b' name="run-background">
+      <default>false</default>
+      <summary>Bun in background</summary>
+      <description>Indicates if the app must run in background or not</description>
+    </key>
   </schema>
 </schemalist>
