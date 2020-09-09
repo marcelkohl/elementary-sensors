@@ -18,6 +18,9 @@ public class Indicator : Wingpanel.Indicator {
         dbusclient.on_start.connect (() => this.visible = settings.get_boolean ("show-indicator"));
 
         dbusclient.interface.is_visible.connect ((visibility) => this.visible = visibility);
+        dbusclient.interface.is_temperature_visible.connect ((visibility) =>
+            display_widget.temperature_widget.is_temperature_visible = visibility
+        );
 
         dbusclient.interface.update.connect ((temperature) => {
             display_widget.temperature_widget.temperature = temperature;

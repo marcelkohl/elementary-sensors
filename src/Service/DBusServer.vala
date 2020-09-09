@@ -11,6 +11,7 @@ public class Service.DBusServer : Object  {
 
     public signal void on_quit_app ();
     public signal void on_show_window ();
+    public signal void is_temperature_visible (bool isVisible);
     public signal void is_visible (bool state);
     public signal void update (int temperature);
 

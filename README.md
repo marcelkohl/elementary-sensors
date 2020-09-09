@@ -18,7 +18,6 @@ sudo sensors-detect
 ```
 
 ## To Do
-- Optional show percentage
 - Translations
 - Use lmsensors lib instead of the CLI
 - Add to elementary store

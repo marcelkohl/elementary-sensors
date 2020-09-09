@@ -4,6 +4,7 @@ public interface DBus.SensorInterface : Object {
     public abstract void quit_app () throws Error;
 
     public signal void update (int temperature);
+    public signal void is_temperature_visible (bool isVisible);
     public signal void is_visible (bool isVisible);
 }
 

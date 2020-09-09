@@ -13,8 +13,13 @@
     </key>
     <key type='b' name="run-background">
       <default>false</default>
-      <summary>Bun in background</summary>
+      <summary>Run in background</summary>
       <description>Indicates if the app must run in background or not</description>
+    </key>
+    <key type='b' name="show-indicator-percentage">
+      <default>true</default>
+      <summary>Show indicator percentage</summary>
+      <description>Indicates if the percentage must be shown</description>
     </key>
   </schema>
 </schemalist>

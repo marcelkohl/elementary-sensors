@@ -6,7 +6,17 @@ public class Widget.TemperatureWidget : Gtk.Box {
 
     public string icon_name {
         set {
-          icon.set_from_icon_name (value, Gtk.IconSize.SMALL_TOOLBAR);
+            icon.set_from_icon_name (value, Gtk.IconSize.SMALL_TOOLBAR);
+        }
+    }
+
+    public bool is_temperature_visible {
+        set {
+            if (value == true) {
+                content.show ();
+            } else {
+                content.hide ();
+            }
         }
     }
 

@@ -29,6 +29,7 @@ public class SensorsApp : Gtk.Application {
         records_selected = settings.get_string ("selected-hashes");
 
         indicator.is_visible (settings.get_boolean ("show-indicator"));
+        indicator.is_temperature_visible (settings.get_boolean ("show-indicator-percentage"));
 
         sensors_data.on_sensor_update.connect ((last_data) => {
           indicator.update (sensors_data.average_temp(last_data, this.records_selected));
@@ -64,6 +65,16 @@ public class SensorsApp : Gtk.Application {
           if (value == true) {
               main_window.hide ();
           }
+      }
+    }
+
+    public bool show_indicator_percentage {
+      get {
+          return settings.get_boolean ("show-indicator-percentage");
+      }
+      set {
+          settings.set_boolean ("show-indicator-percentage", value);
+          indicator.is_temperature_visible (value);
       }
     }
 

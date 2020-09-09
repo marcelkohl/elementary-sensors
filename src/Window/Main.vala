@@ -9,7 +9,7 @@ public class Window.Main : Gtk.Window {
         this.headerbar = new Window.Headerbar ();
         this.headerbar.show_indicator_checker.active = app.show_indicator;
         this.headerbar.run_background_checker.active = app.run_background;
-        // this.headerbar.show_percentage_checker.active = app.show_percentage;
+        this.headerbar.show_percentage_checker.active = app.show_indicator_percentage;
 
         this.headerbar.on_show_indicator_change.connect ((is_checked) => {
             app.show_indicator = is_checked;
@@ -20,7 +20,7 @@ public class Window.Main : Gtk.Window {
         });
 
         this.headerbar.on_show_percentage_change.connect ((is_checked) => {
-            debug ("show percentage %s", is_checked ? "y" : "n");
+            app.show_indicator_percentage = is_checked;
         });
 
         this.set_titlebar (this.headerbar);
