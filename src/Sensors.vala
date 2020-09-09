@@ -42,11 +42,6 @@ public class SensorsApp : Gtk.Application {
         if (this.run_background == true) {
           main_window.hide ();
         }
-
-        // main_window.close_before.connect(()=>{
-        //   debug ("xxx uu");
-        //   return;
-        // });
     }
 
     public bool show_indicator {
@@ -64,8 +59,6 @@ public class SensorsApp : Gtk.Application {
           return settings.get_boolean ("run-background");
       }
       set {
-          debug ("run background attribute %s", value ? "y" : "n");
-
           settings.set_boolean ("run-background", value);
 
           if (value == true) {

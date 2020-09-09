@@ -29,6 +29,14 @@ public class Window.Main : Gtk.Window {
             list_model.feed (last_data, app.records_selected);
         });
 
+        this.delete_event.connect (() => {
+          if (app.run_background == true) {
+              this.hide_on_delete ();
+          }
+
+          return app.run_background;
+        });
+
         list_model.on_toggled.connect ((record_id, is_checked)=> {
             if (is_checked) {
                 app.add_record_hash_to_settings(record_id);
