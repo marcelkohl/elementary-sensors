@@ -18,10 +18,9 @@ sudo sensors-detect
 ```
 
 ## To Do
-- Run in background;
-- Indicator menu to show window
 - Optional show percentage
 - Translations
+- Use lmsensors lib instead of the CLI
 - Add to elementary store
 
 ## Building and running
