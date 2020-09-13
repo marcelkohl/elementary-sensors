@@ -1,27 +1,55 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: com.github.marcelkohl.sensors\n"
-"Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/Utils.vala:13
-#: src/Views/ProcessView/ProcessInfoView/ProcessInfoHeader.vala:32
-#: src/Views/ProcessView/ProcessInfoView/ProcessInfoHeader.vala:35
-#: src/Views/ProcessView/ProcessInfoView/ProcessInfoIOStats.vala:24
-#: src/Views/ProcessView/ProcessInfoView/ProcessInfoIOStats.vala:25
-#: src/Views/ProcessView/ProcessInfoView/ProcessInfoIOStats.vala:29
-#: src/Views/ProcessView/ProcessInfoView/ProcessInfoIOStats.vala:30
-#: src/Views/ProcessView/ProcessInfoView/ProcessInfoIOStats.vala:34
-#: src/Views/ProcessView/ProcessInfoView/ProcessInfoIOStats.vala:35
+#: src/Indicator/Widget/TemperatureWidget.vala:40
 msgid "N/A"
 msgstr ""
 
-#: src/Indicator/Widgets/PopoverWidget.vala:16
-msgid "Quit Sensors"
+#: src/Indicator/Widget/MenuWidget.vala:12
+msgid "Quit"
+msgstr ""
+
+#: src/Indicator/Widget/MenuWidget.vala:17
+msgid "Show sensors"
+msgstr ""
+
+#: src/View/MainList.vala:20
+msgid "Check"
+msgstr ""
+
+#: src/View/MainList.vala:22
+msgid "Group"
+msgstr ""
+
+#: src/View/MainList.vala:23
+msgid "Description"
+msgstr ""
+
+#: src/View/MainList.vala:24
+msgid "Type"
+msgstr ""
+
+#: src/View/MainList.vala:25
+msgid "Value"
+msgstr ""
+
+#: src/Window/Headerbar.vala:20
+msgid "Settings"
+msgstr ""
+
+#: src/Window/Headerbar.vala:33
+msgid "Show indicator"
+msgstr ""
+
+#: src/Window/Headerbar.vala:34
+msgid "Run in background"
+msgstr ""
+
+#: src/Window/Headerbar.vala:35
+msgid "Show indicator percentage"
 msgstr ""

@@ -17,12 +17,12 @@ public class View.MainList {
     cell.set ("weight_set", true);
     cell.set ("weight", 700);
 
-    view.insert_column_with_attributes (-1, "Check", cell_toggle, "active", Column.CHECK);
+    view.insert_column_with_attributes (-1, _("Check"), cell_toggle, "active", Column.CHECK);
     // view.insert_column_with_attributes (-1, "Id", cell, "text", Column.ID);
-    view.insert_column_with_attributes (-1, "Group", cell, "text", Column.GROUP);
-    view.insert_column_with_attributes (-1, "Description", cell, "text", Column.DESCRIPTION);
-    view.insert_column_with_attributes (-1, "Type", cell, "text", Column.TYPE);
-    view.insert_column_with_attributes (-1, "Value", cell, "text", Column.VALUE);
+    view.insert_column_with_attributes (-1, _("Group"), cell, "text", Column.GROUP);
+    view.insert_column_with_attributes (-1, _("Description"), cell, "text", Column.DESCRIPTION);
+    view.insert_column_with_attributes (-1, _("Type"), cell, "text", Column.TYPE);
+    view.insert_column_with_attributes (-1, _("Value"), cell, "text", Column.VALUE);
 
     view.activate_on_single_click = true;
 

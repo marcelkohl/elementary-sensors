@@ -18,7 +18,7 @@ sudo sensors-detect
 ```
 
 ## To Do
-- Translations
+- automatically disable run in background if indicator is not active
 - Use lmsensors lib instead of the CLI
 - Add to elementary store
 

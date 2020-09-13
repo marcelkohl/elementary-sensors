@@ -37,7 +37,7 @@ public class Widget.TemperatureWidget : Gtk.Box {
         icon = new Gtk.Image.from_icon_name (icon_as_param, Gtk.IconSize.SMALL_TOOLBAR);
         icon.margin_top = 4;
 
-        content = new Gtk.Label ("N/A");
+        content = new Gtk.Label (_("N/A"));
         content.margin_top = 4;
 
         pack_start (icon);

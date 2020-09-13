@@ -9,12 +9,12 @@ public class Widget.MenuWidget : Gtk.Grid {
         orientation = Gtk.Orientation.VERTICAL;
 
         button_quit = new Gtk.ModelButton ();
-        button_quit.text = _("Quit Sensors");
+        button_quit.text = _("Quit");
         button_quit.hexpand = true;
         button_quit.clicked.connect (() => quit_app ());
 
         button_show = new Gtk.ModelButton ();
-        button_show.text = _("Show Sensors");
+        button_show.text = _("Show sensors");
         button_show.hexpand = true;
         button_show.clicked.connect (() => show_window ());
 
