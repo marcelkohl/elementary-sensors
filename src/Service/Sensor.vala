@@ -15,63 +15,39 @@ public class Service.Sensor {
     public DataModel.SensorRecord[] updated_data () {
         DataModel.SensorRecord[] sensor_records = {};
 
-        try {
-          Process.spawn_command_line_sync (
-              "sensors -u",
-              out last_stdout,
-              out last_stderr,
-              out last_status
-          );
-        } catch (GLib.SpawnError e) {
-          debug ("Failed to get data");
+        string sensors_str, item_value, item_hash, group_name;
+        string[] item_data;
+
+        foreach (string hwm in get_hw_monitors ()) {
+            sensors_str = get_hwm_sensors (@"/sys/class/hwmon/$hwm");
+
+            group_name = get_content (@"/sys/class/hwmon/$hwm/name");
+            debug ("%s", group_name);
+
+            foreach (string item_name in sensors_str.split(",")) {
+                item_value = get_content (@"/sys/class/hwmon/$hwm/$item_name"); //+"_input");
+
+                if (item_value.length > 0) {
+                    item_hash = group_name + item_name;
+                    item_hash = GLib.Checksum.compute_for_string (ChecksumType.MD5, item_hash, item_hash.length);
+                    item_data = item_name.split ("_");
+
+                    if (item_name.contains("input") || item_name.contains("crit") || item_name.contains("max")) {
+                        item_value = "%d".printf(int.parse(item_value) / 1000);
+                    }
+
+                    sensor_records += new DataModel.SensorRecord (
+                        item_hash,
+                        group_name,
+                        item_data[0],
+                        (bool)item_data[1] ? item_data[1] : "",
+                        item_value
+                    );
+
+                    // debug ("   %s %s", item_name, item_value);
+                }
+            }
         }
-
-        string[] lines = last_stdout.split ("\n");
-        string group_name = "";
-        string first_column, second_column;
-        string item_hash = "";
-        string column_type = "";
-        string column_description = "";
-
-        foreach (string str in lines) {
-            string[] fields = str.split (":");
-            first_column = (bool)fields[0] ? fields[0] : "";
-
-            if (fields.length == 2) {
-              second_column = (bool)fields[1] ? fields[1] : "";
-            } else {
-              second_column = "";
-            }
-
-            if (first_column.length > 0 && first_column.has_prefix("  ") == false) {
-                group_name = first_column.strip();
-            } else {
-                first_column = first_column.strip();
-            }
-
-            column_type = "";
-            column_description = first_column;
-
-            if (column_description.contains("_")) {
-                string[] first_column_fields = column_description.split("_");
-
-                column_description = first_column_fields[0];
-                column_type = first_column_fields[1];
-            }
-
-            if (column_description.length > 0 && second_column.length > 0) {
-                item_hash = group_name + first_column;
-                item_hash = GLib.Checksum.compute_for_string (ChecksumType.MD5, item_hash, item_hash.length);
-
-                sensor_records += new DataModel.SensorRecord (
-                    item_hash,
-                    group_name,
-                    group_name == column_description ? "" : column_description,
-                    column_type,
-                    second_column
-                );
-            }
-        };
 
         return sensor_records;
     }
@@ -93,4 +69,51 @@ public class Service.Sensor {
 
         return counter > 0 ? (int) (total/counter) : 0;
     }
+
+    private string get_content (string path) {
+        string content;
+        try {
+            FileUtils.get_contents (path, out content);
+        } catch (Error e) {
+            return "";
+        }
+        return content.chomp ();
+    }
+
+    private Gee.HashSet<string> get_hw_monitors () {
+        string? name = null;
+        Gee.HashSet<string> hwm_set = new Gee.HashSet<string> ();
+        try {
+            Dir dir = GLib.Dir.open ("/sys/class/hwmon", 0);
+            while ((name = dir.read_name ()) != null) {
+                hwm_set.add (name);
+            }
+        } catch (Error e) {
+            warning (e.message);
+        }
+        return hwm_set;
+    }
+
+    private string get_hwm_sensors (string hwm_path) {
+      string name, sens_string = "";
+      Gee.TreeSet<string> sens_set = new Gee.TreeSet<string> ();
+      try {
+          Dir dir = GLib.Dir.open (hwm_path, 0);
+          while ((name = dir.read_name ()) != null) {
+              sens_set.add (name);
+          }
+      } catch (Error e) {
+          warning (e.message);
+      }
+
+      foreach (string str in sens_set) {
+          if (sens_string != "") {
+              sens_string += ",";
+          }
+          sens_string += str;
+      }
+
+      return sens_string;
+  }
+
 }

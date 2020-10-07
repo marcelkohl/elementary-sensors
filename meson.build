@@ -11,6 +11,7 @@ icondir = join_paths(datadir, 'icons', 'hicolor')
 glib = dependency('glib-2.0')
 gtk = dependency('gtk+-3.0')
 wingpanel = dependency('wingpanel-2.0')
+libgee = dependency('gee-0.8')
 
 config_data = configuration_data()
 config_data.set_quoted('GETTEXT_PACKAGE', meson.project_name())
@@ -54,6 +55,7 @@ executable(
     dependencies: [
         glib,
         gtk,
+        libgee,
         meson.get_compiler('c').find_library('m', required : false),
         meson.get_compiler('vala').find_library('posix'),
     ],
