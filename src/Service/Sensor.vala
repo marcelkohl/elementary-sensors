@@ -22,7 +22,7 @@ public class Service.Sensor {
             sensors_str = get_hwm_sensors (@"/sys/class/hwmon/$hwm");
 
             group_name = get_content (@"/sys/class/hwmon/$hwm/name");
-            debug ("%s", group_name);
+            // debug ("%s", group_name);
 
             foreach (string item_name in sensors_str.split(",")) {
                 item_value = get_content (@"/sys/class/hwmon/$hwm/$item_name"); //+"_input");
@@ -34,15 +34,15 @@ public class Service.Sensor {
 
                     if (item_name.contains("input") || item_name.contains("crit") || item_name.contains("max")) {
                         item_value = "%d".printf(int.parse(item_value) / 1000);
-                    }
 
-                    sensor_records += new DataModel.SensorRecord (
-                        item_hash,
-                        group_name,
-                        item_data[0],
-                        (bool)item_data[1] ? item_data[1] : "",
-                        item_value
-                    );
+                        sensor_records += new DataModel.SensorRecord (
+                          item_hash,
+                          group_name,
+                          item_data[0],
+                          string.joinv("_", item_data[1:item_data.length]),
+                          item_value
+                          );
+                    }
 
                     // debug ("   %s %s", item_name, item_value);
                 }
